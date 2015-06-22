@@ -5,6 +5,4 @@ package com.cybersirius;
  */
 public class Rotor {
     private int inputPosition;
-    private int outputPosition;
-
 }

@@ -12,7 +12,7 @@ public class Engine {
     public Engine() {
     }
 
-    public Character switchLetter(char letter) {
+    protected Character switchLetter(char letter) {
         for (Connector connector : connectors) {
             if (letter == connector.getInputCharacter())
                 return connector.getOutputCharacter();
