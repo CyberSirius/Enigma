@@ -28,19 +28,20 @@ public class Main {
 
 
         Enigma enigma = new Enigma(reflector);
-//        Connector aTob = new Connector('a', 'b');
-//        enigma.addConnector(new Connector('c', 'd'));
-//        enigma.addConnector(new Connector('e', 'f'));
-//        enigma.addConnector(aTob);
+        Connector aTob = new Connector('a', 'b');
+        enigma.addConnector(new Connector('c', 'd'));
+        enigma.addConnector(new Connector('e', 'f'));
+        enigma.addConnector(aTob);
 
         Rotor rotor = new Rotor(alphabet);
-        alphabet.rotateAlphabet();
-        Rotor rotor2 = new Rotor(new Alphabet(alphabet.getAlphabet()));
         enigma.addRotor(rotor);
+
+        Rotor rotor2 = new Rotor(alphabet);
         enigma.addRotor(rotor2);
-        alphabet.rotateAlphabet();
-        Rotor rotor3 = new Rotor(new Alphabet(alphabet.getAlphabet()));
+
+        Rotor rotor3 = new Rotor(alphabet);
         enigma.addRotor(rotor3);
+
         System.out.println("Input: ");
         String input = in.nextLine();
         System.out.println("Output: ");

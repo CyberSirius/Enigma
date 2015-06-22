@@ -86,7 +86,10 @@ public class Enigma {
                 letter = rotors.get(k).decodeLetter(letter);
                 if (i % Math.pow(((double) 26), ((double) k)) == 0) {
                     if (i == 0) {
-                        rotors.get(0).rotateOnce();
+                        if (k == 0) {
+                            rotors.get(0).rotateOnce();
+                        } else {
+                        }
                     } else
                         rotors.get(k).rotateOnce();
                 }

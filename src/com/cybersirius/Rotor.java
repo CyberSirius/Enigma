@@ -6,7 +6,6 @@ package com.cybersirius;
 public class Rotor {
     private char startingLetter;
     private Alphabet alphabet = new Alphabet();
-    private int position;
     private boolean hasRotated;
     private int numOfRotations = 0;
 
@@ -20,7 +19,7 @@ public class Rotor {
     public Rotor(char startingLetter, Alphabet alphabet, int position) {
         this.startingLetter = startingLetter;
         this.alphabet = alphabet;
-        this.position = position;
+        int position1 = position;
     }
 
     public Character encodeLetter(Character letter) {
