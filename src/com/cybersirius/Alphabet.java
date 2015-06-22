@@ -38,4 +38,13 @@ public class Alphabet {
             System.out.print(character);
         }
     }
+
+    public Character getLetter(int index) {
+        return alphabet.get(index);
+    }
+
+    public int getIndex(Character letter) {
+        letter = Character.toLowerCase(letter);
+        return alphabet.indexOf(letter);
+    }
 }
