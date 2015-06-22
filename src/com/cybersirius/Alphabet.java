@@ -9,10 +9,15 @@ public class Alphabet {
     private ArrayList<Character> alphabet = new ArrayList<Character>();
 
     public Alphabet() {
+
     }
 
     public Alphabet(ArrayList<Character> alphabet) {
         this.alphabet = alphabet;
+    }
+
+    public ArrayList<Character> getAlphabet() {
+        return alphabet;
     }
 
     public void setAlphabet(String input) {

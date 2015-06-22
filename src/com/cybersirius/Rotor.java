@@ -51,6 +51,6 @@ public class Rotor {
     }
     public Character decodeLetter(Character letter) {
         int numLetter = alphabet.getIndex(letter);
-        return ((char) (numLetter + 65));
+        return ((char) (numLetter + 97));
     }
 }

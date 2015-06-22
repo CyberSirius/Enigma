@@ -2,25 +2,25 @@ package com.cybersirius;
 
 import java.util.ArrayList;
 
-public class Engine {
+public class Enigma {
     private ArrayList<Connector> connectors = new ArrayList<Connector>();
     private ArrayList<Rotor> rotors = new ArrayList<Rotor>();
     private Reflector reflector = new Reflector();
 
-    public Engine(Reflector reflector) {
+    public Enigma(Reflector reflector) {
         this.reflector = reflector;
     }
 
-    public Engine(ArrayList<Connector> connectors, ArrayList<Rotor> rotors) {
+    public Enigma(ArrayList<Connector> connectors, ArrayList<Rotor> rotors) {
         this.connectors = connectors;
         this.rotors = rotors;
     }
 
-    public Engine(ArrayList<Connector> connectors) {
+    public Enigma(ArrayList<Connector> connectors) {
         this.connectors = connectors;
     }
 
-    public Engine() {
+    public Enigma() {
     }
 
     protected Character switchLetter(char letter, boolean isEncoding) {
@@ -58,13 +58,9 @@ public class Engine {
         return output.toString();
     }
 
-    public String reflectLetters(String input) {
-        StringBuilder output = new StringBuilder();
-        for (int i = 0; i < input.length(); i++) {
-            output.append(reflector.reflect(input.charAt(i)));
+    public char reflectLetter(char input) {
+        return reflector.reflect(input);
 
-        }
-        return output.toString();
     }
 
     public String switchLetters(String input, boolean isEncoding) {
@@ -76,10 +72,28 @@ public class Engine {
     }
 
     public String encode(String input) {
-        String output;
+        StringBuilder output = new StringBuilder();
         boolean isIn = true;
-        output = switchLetters(input, isIn);
-
-        return output;
+        input = switchLetters(input, isIn);//iffy
+        char letter;
+        for (int i = 0; i < input.length(); i++) {
+            letter = input.charAt(i);
+            for (int j = 0; j < rotors.size(); j++) {
+                letter = rotors.get(j).encodeLetter(letter);
+            }
+            letter = reflectLetter(letter);
+            for (int k = rotors.size() - 1; k >= 0; k--) {
+                letter = rotors.get(k).decodeLetter(letter);
+                if (i % Math.pow(((double) 26), ((double) k)) == 0) {
+                    if (i == 0) {
+                        rotors.get(0).rotateOnce();
+                    } else
+                        rotors.get(k).rotateOnce();
+                }
+            }
+            output.append(letter);
+        }
+        isIn = false;
+        return switchLetters(output.toString(), isIn);
     }
 }
