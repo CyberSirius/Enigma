@@ -7,8 +7,14 @@ public class Rotor {
     private char startingLetter;
     private Alphabet alphabet = new Alphabet();
     private int position;
+    private boolean hasRotated;
+    private int numOfRotations = 0;
 
     public Rotor() {
+    }
+
+    public Rotor(Alphabet alphabet) {
+        this.alphabet = alphabet;
     }
 
     public Rotor(char startingLetter, Alphabet alphabet, int position) {
@@ -29,10 +35,20 @@ public class Rotor {
         }
     }
 
-    public void rotateOnce() {
-        rotate(1);
+    public void setUp() {
+        int numOfRotations = ((int) startingLetter) - 65;
     }
 
+    public void rotateOnce() {
+        rotate(1);
+        numOfRotations++;
+        if (numOfRotations % alphabet.getSize() == 0)
+            hasRotated = true;
+    }
+
+    public boolean hasRotated() {
+        return hasRotated;
+    }
     public Character decodeLetter(Character letter) {
         int numLetter = alphabet.getIndex(letter);
         return ((char) (numLetter + 65));

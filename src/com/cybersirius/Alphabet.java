@@ -43,6 +43,10 @@ public class Alphabet {
         return alphabet.get(index);
     }
 
+    public int getSize() {
+        return alphabet.size();
+    }
+
     public int getIndex(Character letter) {
         letter = Character.toLowerCase(letter);
         return alphabet.indexOf(letter);
