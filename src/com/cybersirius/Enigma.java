@@ -3,7 +3,7 @@ package com.cybersirius;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Enigma {
+class Enigma {
     private ArrayList<Connector> connectors = new ArrayList<Connector>();
     private ArrayList<Rotor> rotors = new ArrayList<Rotor>();
     private Reflector reflector = new Reflector();
@@ -24,7 +24,7 @@ public class Enigma {
     public Enigma() {
     }
 
-    protected Character switchLetter(char letter) {
+    private Character switchLetter(char letter) {
         letter = Character.toLowerCase(letter);
         for (Connector connector : connectors) {
 
@@ -51,23 +51,12 @@ public class Enigma {
         }
     }
 
-    public String rotateLetters(String input, Rotor rotor, boolean isEncoding) {
-        StringBuilder output = new StringBuilder();
-        for (int i = 0; i < input.length(); i++)
-            if (isEncoding)
-                output.append(rotor.encodeLetter(input.charAt(i)));
-            else {
-                output.append(rotor.decodeLetter(input.charAt(i)));
-            }
-        return output.toString();
-    }
-
-    public char reflectLetter(char input) {
+    private char reflectLetter(char input) {
         return reflector.reflect(input);
 
     }
 
-    public String switchLetters(String input) {
+    private String switchLetters(String input) {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < input.length(); i++) {
             output.append(switchLetter(input.charAt(i)));
@@ -81,8 +70,8 @@ public class Enigma {
         char letter;
         for (int i = 0; i < input.length(); i++) {
             letter = input.charAt(i);
-            for (int j = 0; j < rotors.size(); j++) {
-                letter = rotors.get(j).encodeLetter(letter);
+            for (Rotor rotor : rotors) {
+                letter = rotor.encodeLetter(letter);
             }
             letter = reflectLetter(letter);
             for (int k = rotors.size() - 1; k >= 0; k--) {

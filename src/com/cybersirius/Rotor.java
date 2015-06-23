@@ -3,9 +3,9 @@ package com.cybersirius;
 /**
  * Created by Strashimir on 21-Jun-15.
  */
-public class Rotor implements Comparable {
-    private char startingLetter;
-    private char initialLetter;
+class Rotor implements Comparable {
+    private final char startingLetter;
+    private final char initialLetter;
     private Alphabet alphabet = new Alphabet();
     private int position = 0;
 
@@ -16,7 +16,7 @@ public class Rotor implements Comparable {
         this.initialLetter = alphabet.getLetter(0);
     }
 
-    public int getPosition() {
+    private int getPosition() {
         return position;
     }
 
@@ -26,7 +26,7 @@ public class Rotor implements Comparable {
         return alphabet.getLetter(numLetter);
     }
 
-    public void rotate(int numOfRotations) {
+    private void rotate(int numOfRotations) {
         for (int i = 0; i < numOfRotations; i++) {
             alphabet.rotateAlphabet();
         }
@@ -38,7 +38,7 @@ public class Rotor implements Comparable {
         rotate(numOfRotations);
     }
 
-    public void reset() {
+    private void reset() {
         int rotate = 26 - alphabet.getIndex(initialLetter);
         if (rotate != 26) {
             rotate(rotate);

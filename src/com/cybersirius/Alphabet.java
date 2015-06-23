@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Strashimir on 21-Jun-15.
  */
-public class Alphabet {
+class Alphabet {
     private ArrayList<Character> alphabet = new ArrayList<Character>();
 
     public Alphabet(Alphabet alphabet) {
@@ -19,7 +19,7 @@ public class Alphabet {
         this.alphabet = alphabet;
     }
 
-    public ArrayList<Character> getAlphabet() {
+    private ArrayList<Character> getAlphabet() {
         return alphabet;
     }
 
@@ -41,18 +41,8 @@ public class Alphabet {
         }
     }
 
-    public void printAlphabet() {
-        for (Character character : this.alphabet) {
-            System.out.print(character);
-        }
-    }
-
     public Character getLetter(int index) {
         return this.alphabet.get(index);
-    }
-
-    public int getSize() {
-        return this.alphabet.size();
     }
 
     public int getIndex(Character letter) {
