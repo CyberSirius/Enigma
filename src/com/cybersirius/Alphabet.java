@@ -8,8 +8,11 @@ import java.util.ArrayList;
 public class Alphabet {
     private ArrayList<Character> alphabet = new ArrayList<Character>();
 
-    public Alphabet() {
+    public Alphabet(Alphabet alphabet) {
+        this.alphabet = alphabet.getAlphabet();
+    }
 
+    public Alphabet() {
     }
 
     public Alphabet(ArrayList<Character> alphabet) {
@@ -26,34 +29,34 @@ public class Alphabet {
 
     public void rotateAlphabet() {
         Character a, b;
-        a = alphabet.get(0);
-        b = alphabet.get(1);
-        for (int i = 1; i < alphabet.size(); i++) {
-            alphabet.set(i, a);
+        a = this.alphabet.get(0);
+        b = this.alphabet.get(1);
+        for (int i = 1; i < this.alphabet.size(); i++) {
+            this.alphabet.set(i, a);
             a = b;
-            if (i + 1 == alphabet.size())
-                alphabet.set(0, a);
+            if (i + 1 == this.alphabet.size())
+                this.alphabet.set(0, a);
             else
-                b = alphabet.get(i + 1);
+                b = this.alphabet.get(i + 1);
         }
     }
 
     public void printAlphabet() {
-        for (Character character : alphabet) {
+        for (Character character : this.alphabet) {
             System.out.print(character);
         }
     }
 
     public Character getLetter(int index) {
-        return alphabet.get(index);
+        return this.alphabet.get(index);
     }
 
     public int getSize() {
-        return alphabet.size();
+        return this.alphabet.size();
     }
 
     public int getIndex(Character letter) {
         letter = Character.toLowerCase(letter);
-        return alphabet.indexOf(letter);
+        return this.alphabet.indexOf(letter);
     }
 }

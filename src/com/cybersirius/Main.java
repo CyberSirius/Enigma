@@ -33,18 +33,25 @@ public class Main {
         enigma.addConnector(new Connector('e', 'f'));
         enigma.addConnector(aTob);
 
-        Rotor rotor = new Rotor(alphabet);
+        Rotor rotor = new Rotor(new Alphabet(alphabet), 'Z', 2);
         enigma.addRotor(rotor);
 
-        Rotor rotor2 = new Rotor(alphabet);
+        Rotor rotor2 = new Rotor(new Alphabet(alphabet), 'B', 1);
         enigma.addRotor(rotor2);
 
-        Rotor rotor3 = new Rotor(alphabet);
+
+        Rotor rotor3 = new Rotor(new Alphabet(alphabet), 'A', 3);
         enigma.addRotor(rotor3);
 
+        enigma.initiate();
         System.out.println("Input: ");
         String input = in.nextLine();
         System.out.println("Output: ");
-        System.out.print(enigma.encode(input));
+        String output = enigma.encode(input);
+        System.out.println(output);
+        enigma.initiate();
+        System.out.println("Test: ");
+        output = enigma.encode(output);
+        System.out.println(output);
     }
 }

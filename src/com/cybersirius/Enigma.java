@@ -1,6 +1,7 @@
 package com.cybersirius;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Enigma {
     private ArrayList<Connector> connectors = new ArrayList<Connector>();
@@ -23,18 +24,14 @@ public class Enigma {
     public Enigma() {
     }
 
-    protected Character switchLetter(char letter, boolean isEncoding) {
+    protected Character switchLetter(char letter) {
         letter = Character.toLowerCase(letter);
         for (Connector connector : connectors) {
-            if (isEncoding) {
-                if (letter == connector.getInputCharacter())
-                    return connector.getOutputCharacter();
-            } else {
-                if (letter == connector.getOutputCharacter())
-                    return connector.getInputCharacter();
 
-            }
-
+            if (letter == connector.getInputCharacter())
+                return connector.getOutputCharacter();
+            else if (letter == connector.getOutputCharacter())
+                return connector.getInputCharacter();
         }
         return letter;
     }
@@ -45,6 +42,13 @@ public class Enigma {
 
     public void addRotor(Rotor rotor) {
         rotors.add(rotor);
+    }
+
+    public void initiate() {
+        Collections.sort(rotors);
+        for (Rotor rotor : rotors) {
+            rotor.setUp();
+        }
     }
 
     public String rotateLetters(String input, Rotor rotor, boolean isEncoding) {
@@ -63,18 +67,17 @@ public class Enigma {
 
     }
 
-    public String switchLetters(String input, boolean isEncoding) {
+    public String switchLetters(String input) {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < input.length(); i++) {
-            output.append(switchLetter(input.charAt(i), isEncoding));
+            output.append(switchLetter(input.charAt(i)));
         }
         return output.toString();
     }
 
     public String encode(String input) {
         StringBuilder output = new StringBuilder();
-        boolean isIn = true;
-        input = switchLetters(input, isIn);//iffy
+        input = switchLetters(input);//iffy
         char letter;
         for (int i = 0; i < input.length(); i++) {
             letter = input.charAt(i);
@@ -96,7 +99,6 @@ public class Enigma {
             }
             output.append(letter);
         }
-        isIn = false;
-        return switchLetters(output.toString(), isIn);
+        return switchLetters(output.toString());
     }
 }
