@@ -6,10 +6,15 @@ class Main {
 
 
     public static void main(String[] args) {
-//        // write your code here
         Scanner in = new Scanner(System.in);
         Alphabet alphabet = new Alphabet();
         alphabet.setAlphabet("qwertyuiopasdfghjklzxcvbnm");
+        Alphabet alphabet1 = new Alphabet();
+        alphabet1.setAlphabet("qwertyuiopasdfghjklzxcvbnm");
+
+        Alphabet alphabet2 = new Alphabet();
+        alphabet2.setAlphabet("qwertyuiopasdfghjklzxcvbnm");
+
 
         Reflector reflector = new Reflector();
         reflector.addConnector(new Connector('a', 'n'));
@@ -33,14 +38,14 @@ class Main {
         enigma.addConnector(new Connector('e', 'f'));
         enigma.addConnector(aTob);
 
-        Rotor rotor = new Rotor(new Alphabet(alphabet), 'Z', 2);
+        Rotor rotor = new Rotor(alphabet, 'K', 3);
         enigma.addRotor(rotor);
 
-        Rotor rotor2 = new Rotor(new Alphabet(alphabet), 'B', 1);
+        Rotor rotor2 = new Rotor(alphabet1, 'F', 2);
         enigma.addRotor(rotor2);
 
 
-        Rotor rotor3 = new Rotor(new Alphabet(alphabet), 'A', 3);
+        Rotor rotor3 = new Rotor(alphabet2, 'C', 1);
         enigma.addRotor(rotor3);
 
         enigma.initiate();

@@ -33,9 +33,9 @@ class Rotor implements Comparable {
     }
 
     public void setUp() {
-        reset();
-        int numOfRotations = ((int) Character.toUpperCase(startingLetter)) - 65;
-        rotate(numOfRotations);
+        this.reset();
+        int numOfRotations = ((int) Character.toUpperCase(this.startingLetter)) - 65;
+        this.rotate(numOfRotations);
     }
 
     private void reset() {
@@ -57,6 +57,6 @@ class Rotor implements Comparable {
     @Override
     public int compareTo(Object compareRotor) {
         int comparePosition = ((Rotor) compareRotor).getPosition();
-        return comparePosition - this.position;
+        return this.position - comparePosition;
     }
 }

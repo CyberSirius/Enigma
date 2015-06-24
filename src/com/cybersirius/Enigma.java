@@ -45,8 +45,8 @@ class Enigma {
     }
 
     public void initiate() {
-        Collections.sort(rotors);
-        for (Rotor rotor : rotors) {
+        Collections.sort(this.rotors);
+        for (Rotor rotor : this.rotors) {
             rotor.setUp();
         }
     }

@@ -11,10 +11,6 @@ class Reflector {
     public Reflector() {
     }
 
-    public Reflector(ArrayList<Connector> alphabet) {
-        this.alphabet = alphabet;
-    }
-
     public Character reflect(Character letter) {
         for (Connector connector : alphabet) {
             if (connector.getInputCharacter() == letter)
