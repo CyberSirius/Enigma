@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Strashimir on 22-Jun-15.
  */
 class Reflector {
-    private ArrayList<Connector> alphabet = new ArrayList<Connector>();
+    private final ArrayList<Connector> alphabet = new ArrayList<Connector>();
 
     public Reflector() {
     }
