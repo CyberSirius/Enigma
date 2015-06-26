@@ -3,7 +3,7 @@ package com.cybersirius;
 import java.util.Scanner;
 
 class Main {
-
+//TODO Implementing a simple GUI is top priority
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);

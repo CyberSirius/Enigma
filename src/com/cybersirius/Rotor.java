@@ -1,10 +1,14 @@
 package com.cybersirius;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 /**
  * Created by Strashimir on 21-Jun-15.
  * Rotor class
  */
-class Rotor implements Comparable {
+class Rotor implements Comparable, Serializable {
     private final char startingLetter;
     private final char initialLetter;
     private Alphabet alphabet = new Alphabet();
@@ -53,6 +57,20 @@ class Rotor implements Comparable {
     public Character decodeLetter(Character letter) {
         int numLetter = alphabet.getIndex(letter);
         return ((char) (numLetter + 97));
+    }
+
+    public void save() {
+        try {
+
+            FileOutputStream fout = new FileOutputStream(this.startingLetter + this.position + ".ser");//dunno what I'm doing :D
+            ObjectOutputStream oos = new ObjectOutputStream(fout);
+            oos.writeObject(this);
+            oos.close();
+            System.out.println("Done");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
