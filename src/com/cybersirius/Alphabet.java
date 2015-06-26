@@ -7,6 +7,7 @@ import java.util.ArrayList;
  Alphabet class, used in Rotor
  */
 class Alphabet {
+    //    todo implement isAlphabetCorrect(all symbols different, correct length, based on language)
     private ArrayList<Character> alphabet = new ArrayList<Character>();
 
     public Alphabet(Alphabet alphabet) {
@@ -29,6 +30,7 @@ class Alphabet {
     }
 
     public void rotateAlphabet() {
+//        TODO rework and fix, atm is going backwards
         Character a, b;
         a = alphabet.get(0);
         b = alphabet.get(1);
