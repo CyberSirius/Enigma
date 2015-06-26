@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Strashimir on 22-Jun-15.
+ * Reflector class
  */
 class Reflector {
     private final ArrayList<Connector> alphabet = new ArrayList<Connector>();

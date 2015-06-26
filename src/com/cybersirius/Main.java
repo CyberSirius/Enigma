@@ -14,8 +14,6 @@ class Main {
 
         Alphabet alphabet2 = new Alphabet();
         alphabet2.setAlphabet("qwertyuiopasdfghjklzxcvbnm");
-
-
         Reflector reflector = new Reflector();
         reflector.addConnector(new Connector('a', 'n'));
         reflector.addConnector(new Connector('b', 'p'));
@@ -26,12 +24,10 @@ class Main {
         reflector.addConnector(new Connector('h', 'w'));
         reflector.addConnector(new Connector('j', 'o'));
         reflector.addConnector(new Connector('l', 'y'));
+        reflector.addConnector(new Connector('u', 'x'));
         reflector.addConnector(new Connector('r', 'q'));
         reflector.addConnector(new Connector('s', 'v'));
         reflector.addConnector(new Connector('t', 'z'));
-        reflector.addConnector(new Connector('u', 'x'));
-
-
         Enigma enigma = new Enigma(reflector);
         Connector aTob = new Connector('a', 'b');
         enigma.addConnector(new Connector('c', 'd'));

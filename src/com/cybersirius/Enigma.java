@@ -70,22 +70,25 @@ class Enigma {
         char letter;
         for (int i = 0; i < input.length(); i++) {
             letter = input.charAt(i);
-            for (Rotor rotor : rotors) {
-                letter = rotor.encodeLetter(letter);
-            }
-            letter = reflectLetter(letter);
-            for (int k = rotors.size() - 1; k >= 0; k--) {
-                letter = rotors.get(k).decodeLetter(letter);
-                if (i % Math.pow(((double) 26), ((double) k)) == 0) {
-                    if (i == 0) {
-                        if (k == 0) {
-                            rotors.get(0).rotateOnce();
-                        } else {
-                        }
-                    } else
-                        rotors.get(k).rotateOnce();
+            if (Character.isLetter(letter)) {
+                for (Rotor rotor : rotors) {
+                    letter = rotor.encodeLetter(letter);
+                }
+                letter = reflectLetter(letter);
+                for (int k = rotors.size() - 1; k >= 0; k--) {
+                    letter = rotors.get(k).decodeLetter(letter);
+                    if (i % Math.pow(((double) 26), ((double) k)) == 0) {
+                        if (i == 0) {
+                            if (k == 0) {
+                                rotors.get(0).rotateOnce();
+                            } else {
+                            }
+                        } else
+                            rotors.get(k).rotateOnce();
+                    }
                 }
             }
+
             output.append(letter);
         }
         return switchLetters(output.toString());

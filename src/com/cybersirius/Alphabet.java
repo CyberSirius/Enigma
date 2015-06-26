@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Strashimir on 21-Jun-15.
+ Alphabet class, used in Rotor
  */
 class Alphabet {
     private ArrayList<Character> alphabet = new ArrayList<Character>();

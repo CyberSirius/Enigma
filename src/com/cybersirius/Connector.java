@@ -2,6 +2,8 @@ package com.cybersirius;
 
 /**
  * Created by Strashimir on 21-Jun-15.
+ Connector class
+
  */
 class Connector {
     private final char inputCharacter;

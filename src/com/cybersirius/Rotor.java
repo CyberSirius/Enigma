@@ -2,6 +2,7 @@ package com.cybersirius;
 
 /**
  * Created by Strashimir on 21-Jun-15.
+ * Rotor class
  */
 class Rotor implements Comparable {
     private final char startingLetter;
