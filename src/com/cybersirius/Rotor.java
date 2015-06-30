@@ -44,8 +44,8 @@ class Rotor implements Comparable, Serializable {
     }
 
     private void reset() {
-        int rotate = 26 - alphabet.getIndex(initialLetter);
-        if (rotate != 26) {
+        int rotate = alphabet.getIndex(initialLetter);
+        if (rotate != 0) {
             rotate(rotate);
         }
     }

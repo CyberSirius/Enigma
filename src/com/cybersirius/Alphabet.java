@@ -30,18 +30,8 @@ class Alphabet {
     }
 
     public void rotateAlphabet() {
-//        TODO rework and fix, atm is going backwards
-        Character a, b;
-        a = alphabet.get(0);
-        b = alphabet.get(1);
-        for (int i = 1; i < alphabet.size(); i++) {
-            alphabet.set(i, a);
-            a = b;
-            if (i + 1 == alphabet.size())
-                alphabet.set(0, a);
-            else
-                b = alphabet.get(i + 1);
-        }
+        alphabet.add(alphabet.get(0));
+        alphabet.remove(0);
     }
 
     public Character getLetter(int index) {
