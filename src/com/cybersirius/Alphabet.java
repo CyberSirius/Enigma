@@ -1,6 +1,7 @@
 package com.cybersirius;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Strashimir on 21-Jun-15.
@@ -41,5 +42,17 @@ class Alphabet {
     public int getIndex(Character letter) {
         letter = Character.toLowerCase(letter);
         return alphabet.indexOf(letter);
+    }
+
+    public boolean isAlphabetCorrect() {
+        boolean isDiff = true;
+        ArrayList<Character> sortedAlphabet = this.alphabet;
+        Collections.sort(sortedAlphabet);
+        for (int i = 0; i < sortedAlphabet.size() - 1; i++) {
+            if (sortedAlphabet.get(i) == sortedAlphabet.get(i + 1)) {
+                isDiff = false;
+            }
+        }
+        return isDiff;
     }
 }
