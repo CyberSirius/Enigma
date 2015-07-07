@@ -8,8 +8,8 @@ import java.util.Collections;
  Alphabet class, used in Rotor
  */
 class Alphabet {
-    //    todo implement isAlphabetCorrect(all symbols different, correct length, based on language)
-    private ArrayList<Character> alphabet = new ArrayList<Character>();
+    public static final int ALPHABET_LENGTH = 26;
+    private ArrayList<Character> alphabet = new ArrayList<>();
 
     public Alphabet(Alphabet alphabet) {
         this.alphabet = alphabet.getAlphabet();
@@ -45,14 +45,17 @@ class Alphabet {
     }
 
     public boolean isAlphabetCorrect() {
-        boolean isDiff = true;
+        boolean isCorrect = true;
         ArrayList<Character> sortedAlphabet = this.alphabet;
         Collections.sort(sortedAlphabet);
         for (int i = 0; i < sortedAlphabet.size() - 1; i++) {
             if (sortedAlphabet.get(i) == sortedAlphabet.get(i + 1)) {
-                isDiff = false;
+                isCorrect = false;
             }
         }
-        return isDiff;
+        if (this.alphabet.size() != ALPHABET_LENGTH || !isCorrect) {
+            isCorrect = false;
+        }
+        return isCorrect;
     }
 }

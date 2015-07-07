@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Reflector class
  */
 class Reflector {
-    private final ArrayList<Connector> alphabet = new ArrayList<Connector>();
+    private final ArrayList<Connector> alphabet = new ArrayList<>();
 
     public Reflector() {
     }

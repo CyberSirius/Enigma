@@ -1,11 +1,19 @@
 package com.cybersirius;
 
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
 import java.util.Scanner;
 
-class Main {
+public class Main extends Application {
 //TODO Implementing a simple GUI is top priority
+Button button;
 
     public static void main(String[] args) {
+        launch(args);
         Scanner in = new Scanner(System.in);
         //<editor-fold desc="Alphabets init">
         Alphabet alphabet = new Alphabet();
@@ -56,5 +64,19 @@ class Main {
         System.out.println("Test: ");
         output = enigma.encode(output);
         System.out.println(output);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("Enigma");
+        button = new Button("Hello there!");
+
+        button.setOnAction(e -> System.out.println("how you doin"));
+        StackPane layout = new StackPane();
+        layout.getChildren().add(button);
+
+        Scene scene = new Scene(layout, 300, 250);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }

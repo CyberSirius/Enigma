@@ -4,21 +4,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 class Enigma {
-    private ArrayList<Connector> connectors = new ArrayList<Connector>();
-    private ArrayList<Rotor> rotors = new ArrayList<Rotor>();
+    public static final int ALPHABET_LENGTH = 26;
+    private ArrayList<Connector> plugboard = new ArrayList<>();
+    private ArrayList<Rotor> rotors = new ArrayList<>();
     private Reflector reflector = new Reflector();
 
     public Enigma(Reflector reflector) {
         this.reflector = reflector;
     }
 
-    public Enigma(ArrayList<Connector> connectors, ArrayList<Rotor> rotors) {
-        this.connectors = connectors;
+    public Enigma(ArrayList<Connector> plugboard, ArrayList<Rotor> rotors) {
+        this.plugboard = plugboard;
         this.rotors = rotors;
     }
 
-    public Enigma(ArrayList<Connector> connectors) {
-        this.connectors = connectors;
+    public Enigma(ArrayList<Connector> plugboard) {
+        this.plugboard = plugboard;
     }
 
     public Enigma() {
@@ -26,7 +27,7 @@ class Enigma {
 
     private Character switchLetter(char letter) {
         letter = Character.toLowerCase(letter);
-        for (Connector connector : connectors) {
+        for (Connector connector : plugboard) {
 
             if (letter == connector.getInputCharacter())
                 return connector.getOutputCharacter();
@@ -37,7 +38,7 @@ class Enigma {
     }
 
     public void addConnector(Connector connector) {
-        connectors.add(connector);
+        plugboard.add(connector);
     }
 
     public void addRotor(Rotor rotor) {
@@ -46,9 +47,7 @@ class Enigma {
 
     public void initiate() {
         Collections.sort(this.rotors);
-        for (Rotor rotor : this.rotors) {
-            rotor.setUp();
-        }
+        this.rotors.forEach((rotor) -> rotor.setUp());
     }
 
     private char reflectLetter(char input) {
@@ -77,7 +76,7 @@ class Enigma {
                 letter = reflectLetter(letter);
                 for (int k = rotors.size() - 1; k >= 0; k--) {
                     letter = rotors.get(k).decodeLetter(letter);
-                    if (i % Math.pow(((double) 26), ((double) k)) == 0) {
+                    if (i % Math.pow(((double) ALPHABET_LENGTH), ((double) k)) == 0) {
                         if (i == 0) {
                             if (k == 0) {
                                 rotors.get(0).rotateOnce();
