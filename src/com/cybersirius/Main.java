@@ -1,16 +1,15 @@
 package com.cybersirius;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.util.Scanner;
 
 public class Main extends Application {
 //TODO Implementing a simple GUI is top priority
-Button button;
 
     public static void main(String[] args) {
         launch(args);
@@ -38,7 +37,6 @@ Button button;
         reflector.addConnector(new Connector('r', 'q'));
         reflector.addConnector(new Connector('s', 'v'));
         reflector.addConnector(new Connector('t', 'z'));
-        //</editor-fold>s
         Enigma enigma = new Enigma(reflector);
         //<editor-fold desc="Connector inits">
         Connector aTob = new Connector('a', 'b');
@@ -68,15 +66,9 @@ Button button;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Enigma");
-        button = new Button("Hello there!");
-
-        button.setOnAction(e -> System.out.println("how you doin"));
-        StackPane layout = new StackPane();
-        layout.getChildren().add(button);
-
-        Scene scene = new Scene(layout, 300, 250);
-        primaryStage.setScene(scene);
+        primaryStage.setScene(new Scene(root, 1000, 1000));
         primaryStage.show();
     }
 }
